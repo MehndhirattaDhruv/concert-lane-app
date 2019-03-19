@@ -32,12 +32,11 @@ const width = Dimensions.get('window').width;
 export default class CardComponents extends React.Component {
     render() {
         const { cardElements =[] } = this.props
-        console.log(cardElements , "cardElements")
         return (
             <React.Fragment>
               {
-                  cardElements && cardElements.length && cardElements.map((item)=>(
-                      <TouchableWithoutFeedback>
+                  cardElements && cardElements.length && cardElements.map((item, index)=>(
+                      <TouchableWithoutFeedback key={index}>
                             <Card style={{ marginLeft : 10 , marginRight: 10, marginBottom:15 }}>
                                 <CardItem cardBody>
                                     <Image source={item.image} style={styles.cardElementImage} />
@@ -52,7 +51,7 @@ export default class CardComponents extends React.Component {
                                         <Text style={{ color:"#5e5e5e" , fontWeight:"600"}}>{`${item.time}- ${item.place}`}</Text>
                                     </Body>
                                     <Right style={{ flex:1 }}>
-                                      <Button style={styles.buttonBook}><Text style={{ color:"#fff" }}>Book Now</Text></Button>
+                                      <Button style={styles.buttonBook}><Text style={{ color:"#fff" , fontSize: 12}}>Book Now</Text></Button>
                                     </Right>
                                 </CardItem>
                             </Card>

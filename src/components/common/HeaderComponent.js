@@ -19,23 +19,28 @@ import {
     Icon,
     Thumbnail
 } from 'native-base';
-
+import { connect } from 'react-redux';
+import themeStyles from '../../styles/themeStyles'
 const height = Dimensions.get('window').height;
 const width =  Dimensions.get('window').width;
 
-export default class HeaderComponent  extends React.Component{
+class HeaderComponent  extends React.Component{
 render(){
-     const { iconName ='' } = this.props
+    const { iconName = '', onBackHandler , title=''} = this.props
     return(
         <React.Fragment>
             <Header  style={ styles.header}>
-                <Left style={{ alignSelf: 'center' }}>
+                <Left style={{ alignSelf: 'center' }} onPress={ onBackHandler}>
                     <Icon
                         active
                         name={iconName}
+                        style={{ color:"#fff" }}
+                        onPress={onBackHandler}
+
                     />
                 </Left>
                 <Body>
+                    <Title style={themeStyles.HEADER_STYLE_GLOBAL}>{title}</Title>
                 </Body>
             </Header>
         </React.Fragment>
@@ -45,7 +50,7 @@ render(){
 
 const styles = StyleSheet.create({
     header:{
-        backgroundColor: "#fff",
+        backgroundColor: "#613ec1",
         alignItems: 'center',
         justifyContent: "center",
         shadowColor: "transparent",
@@ -59,3 +64,5 @@ const styles = StyleSheet.create({
         },
     }
 })
+
+export default connect (state => state)(HeaderComponent)

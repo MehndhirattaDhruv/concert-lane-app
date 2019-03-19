@@ -15,6 +15,8 @@ import {
     Content
 } from 'native-base'
 import { HeaderComponent, CardComponents , SearchBar } from '../../components'
+import SplashScreen from 'react-native-splash-screen'
+import themeStyles from '../../styles/themeStyles'
 import styles from './DiscoverEventsStyles';
 
 const cardElements =[
@@ -29,6 +31,10 @@ export default class DiscoverEvents extends React.Component {
         searchTerm:""
     }
 
+    componentDidMount() {
+        SplashScreen.hide();
+    }
+
     onChangeSearchTerm = (searchTerm) => {
         this.setState({
             searchTerm
@@ -40,13 +46,15 @@ export default class DiscoverEvents extends React.Component {
         return (
             <Root style={{ flex: 1 }}>
                 <HeaderComponent
-                    iconName='menu'
+                    iconName = 'arrow-back'
+                    title= "Discover Events"
                 />
-                <Title style={styles.title}>Discover Events </Title>
+                {/* <Title style={themeStyles.HEADER_STYLE_GLOBAL}> </Title> */}
                 <SearchBar
                     searchTerm={searchTerm}
                     onChangeSearchTerm={this.onChangeSearchTerm}
-                />
+                    placeholderTerm = 'Search groups,events,artist'
+            />
                 <Content>
                 <CardComponents
                     cardElements={cardElements}

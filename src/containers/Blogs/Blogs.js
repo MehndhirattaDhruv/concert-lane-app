@@ -20,10 +20,10 @@ export default class Blogs extends React.Component {
         return (
             <Root style={{ flex: 1 }}>
                 <HeaderComponent
-                    iconName='menu'
-                    openDrawer={() => this.props.navigation.openDrawer()}
+                    iconName='arrow-back'
+                    title= "Blogs"
                 />
-                <Text>Hello I am Blogs screen</Text>
+                
             </Root>
         )
     }

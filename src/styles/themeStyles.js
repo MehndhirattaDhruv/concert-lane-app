@@ -1,3 +1,4 @@
+import { verticalScale } from '../utilities/Sizes'
 export default {
     FONT_SIZE_SMALL: 12,
     FONT_SIZE_MEDIUM: 14,
@@ -7,6 +8,15 @@ export default {
     FONT_WEIGHT_LIGHT: "200",
     FONT_WEIGHT_MEDIUM: "600",
     FONT_WEIGHT_HEAVY: "800",
-    TITLE_COLOR:"#2c2c46",
-    TITLE_FONT_SIZE:20
+    TITLE_COLOR:"#fff",
+    TITLE_FONT_SIZE:20,
+    HEADER_STYLE_GLOBAL:{
+        color: "#fff",
+        fontWeight:"800",
+        fontSize: verticalScale(22),
+        textAlign: "left",
+        width: "100%",
+        marginLeft: 10,
+    }
 };
+

@@ -1,3 +1,6 @@
 export { default as DiscoverEvents } from './DiscoverEvents/DiscoverEvents'
 export { default as Blogs } from './Blogs/Blogs'
 export { default as Artists } from './Artists/Artists'
+export { default as GenresComponent } from './Genres/GenresComponent'
+export { default as FeaturesComponent }  from './FeaturedEvents/FeaturesComponent'
+export { default as ArtistsDetail } from './Artists/ArtistsDetail'

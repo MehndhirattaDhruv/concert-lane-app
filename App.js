@@ -6,16 +6,19 @@ import {
   View,
   StyleSheet,
   SafeAreaView,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from 'react-native';
 import { YellowBox } from 'react-native';
 
 import {
   Container,
-  Root
+  Root,
+  
 } from 'native-base'
-
+import { Provider } from 'react-redux'
 import Routes from './src/containers/Routes'
+import store from './src/store'
 
 export default class App extends React.Component{
  
@@ -29,7 +32,10 @@ export default class App extends React.Component{
     return(
       <Root>
         <Container style={{ backgroundColor:"#fff" }}>
+          <Provider store={store}>
             <Routes />
+          </Provider>
+            
         </Container>
       </Root>
        

@@ -19,14 +19,14 @@ import styles from '../../containers/DiscoverEvents/DiscoverEventsStyles'
 
 export default class SearchBar extends React.Component {
     render() {
-        let { searchTerm = '', onChangeSearchTerm} =this.props
+        let { searchTerm = '', onChangeSearchTerm, placeholderTerm = '' } = this.props
         return (
             <Item regular style={styles.searchBar}>
                 <Icon name="ios-search" />
-                <Input 
-                    placeholder="Search groups,events,artist" 
+                <Input
+                    placeholder={ placeholderTerm }
                     value={searchTerm}
-                    style={{ fontSize: 12 }} 
+                    style={{ fontSize: 12 }}
                     onChangeText={(text) => onChangeSearchTerm(text)}
                 />
             </Item>
