@@ -37,13 +37,13 @@ export function getArtists() {
 }
 
 //action used to get detail of the artist
-export function getArtistDetail(payload) {
+export function getArtistDetail(name) {
     dispatch({
         type: types.GET_ARTIST_DETAIL
     })
 
 
-    return new Promise((response, rej) => artistDetailAPI(payload)
+    return new Promise((response, rej) => artistDetailAPI(name)
         .then(res => {
             dispatch({
                 type: types.GET_ARTIST_DETAIL_SUCCESS,

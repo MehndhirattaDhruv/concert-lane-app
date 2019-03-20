@@ -1,5 +1,4 @@
 import {
-    createMaterialTopTabNavigator,
     createAppContainer,
     createDrawerNavigator,
     createStackNavigator,
@@ -13,11 +12,13 @@ import {
     GenresComponent,
     MyHomeScreen,
     FeaturesComponent,
-    ArtistsDetail 
+    ArtistsDetail ,
+    ArtistsListing
 } from "./";
 import { Icon } from "native-base";
 import React, { Component, Fragment } from 'react'
-import { View , Text  , StatusBar } from 'react-native'
+import { View , Text  , StatusBar , TouchableOpacity } from 'react-native'
+
 
 const BottomNav = createBottomTabNavigator(
     {
@@ -91,6 +92,14 @@ const BottomNav = createBottomTabNavigator(
                 Genres: {
                     screen: GenresComponent,
                     navigationOptions: () => ({ header: null })
+                },
+                ArtistsListing: {
+                    screen: ArtistsListing,
+                    navigationOptions: () => ({ header: null })
+                },
+                ArtistsDetailGenres: {
+                    screen: ArtistsDetail,
+                    navigationOptions: () => ({ header: null })
                 }
             }, {
                     defaultNavigationOptions: {
@@ -118,7 +127,7 @@ const BottomNav = createBottomTabNavigator(
                 else if (routeName === "Genres") {
                     source = "Genres";
                 }
-                return  <Text>{source}</Text>
+                return <Text>{source}</Text>
                 // return <Image style={{ width: 25, height: 25, resizeMode: "contain" }} source={source} />;
             }
         }),

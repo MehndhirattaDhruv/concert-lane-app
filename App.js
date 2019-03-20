@@ -24,11 +24,11 @@ export default class App extends React.Component{
  
   render(){
     console.disableYellowBox = true;
-    // const _XHR = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest?
-    //   GLOBAL.originalXMLHttpRequest :
-    //   GLOBAL.XMLHttpRequest
+    const _XHR = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest?
+      GLOBAL.originalXMLHttpRequest :
+      GLOBAL.XMLHttpRequest
 
-    // XMLHttpRequest = _XHR
+    XMLHttpRequest = _XHR
     return(
       <Root>
         <Container style={{ backgroundColor:"#fff" }}>

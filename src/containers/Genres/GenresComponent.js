@@ -45,7 +45,7 @@ export default class GenresComponent extends React.Component {
                 <View style={styles.ViewBadges}>
                     {
                         genres && genres.length ? genres.map((item, index) => {
-                            return <TouchableOpacity style={styles.gridSystem}>
+                                return <TouchableOpacity onPress={() => this.props.navigation.navigate('ArtistsListing',{ type :item.key })} style={styles.gridSystem}>
                                 <Text style={styles.textGenres}>{item.name}</Text>
                            </TouchableOpacity>
                         }) : null

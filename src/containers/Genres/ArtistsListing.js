@@ -24,61 +24,47 @@ import {
     Thumbnail
 } from 'native-base'
 import actions from '../../actions'
-import { HeaderComponent , ContentLoaderArtistList } from '../../components'
+import { HeaderComponent, ContentLoaderArtistList } from '../../components'
 import { connect } from 'react-redux'
-import axios from 'axios'
-import { getArtists } from '../../actions/artists';
-import themeStyles from '../../styles/themeStyles'
-    class Artists extends React.Component {
-    state={
-        refreshing: false,
-    }
+class ArtistsListing extends React.Component {
+ 
     componentDidMount() {
-        actions.getArtists()
-    };
-
-    _onRefresh = () => {
-        actions.getArtists()
-    }
-        
-    openSocialLink = (url) => {
-        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+        let type = this.props.navigation.getParam('type')
+        actions.getArtistListingGenres(type).then(res =>{
+            console.log(res  , "response of the genres listing ")
+        }).catch(err => {
+            console.log(err , "error occured ")
+        })
     }
 
     render() {
-        console.log(this.props.artists , "props")
-        let { artists =[]  , fetching  } =this.props.artists
-        console.log(artists,"artistsss")
-        let { refreshing } = this.state
+        let { genresArtists = [], fetching } = this.props.genres
 
         return (
             <Root style={{ flex: 1 }}>
                 <HeaderComponent
                     iconName='arrow-back'
-                    openDrawer={() => this.props.navigation.openDrawer()}
-                    title = 'Artists'
+                    title='Genres Artists'
                 />
                 <List>
-                  {!fetching   ?  <FlatList
+                    {!fetching ? <FlatList
                         keyExtractor={(item, index) => { return index }}
-                        data={artists}
-                        refreshing={refreshing}
-                        onRefresh={this._onRefresh}
-                        renderItem={({ item, index }) =>  
+                        data={genresArtists}
+                        renderItem={({ item, index }) =>
                             <List>
-                                <ListItem avatar onPress={() => this.props.navigation.navigate("ArtistsDetail", { name:item.name })}>
+                                <ListItem avatar onPress={() => this.props.navigation.navigate("ArtistsDetailGenres", { name: item.name })}>
                                     <Left>
                                         <Thumbnail source={{ uri: item.image[1]['#text'] || 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50' }} />
                                     </Left>
                                     <Body>
-                                        <Text style={{ fontSize: 16, fontWeight: '800', color:"#2c2c46"}}>{item.name}</Text>
+                                        <Text style={{ fontSize: 16, fontWeight: '800', color: "#2c2c46" }}>{item.name}</Text>
                                         <Text onPress={(text) => this.openSocialLink(item.url)}>{`More info - ${item.url} `}</Text>
                                     </Body>
                                 </ListItem>
                             </List>
-               }
+                        }
                     /> : <ContentLoaderArtistList
-                            count={50}
+                            count={30}
                         />
                     }
                 </List>
@@ -87,4 +73,4 @@ import themeStyles from '../../styles/themeStyles'
     }
 }
 
-export default connect(state => state)(Artists);
+export default connect(state => state)(ArtistsListing);
